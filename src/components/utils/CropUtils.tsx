@@ -1,5 +1,6 @@
 export const getCroppedImg = (imageSrc: string, crop: any): Promise<string> => {
   const image = new Image();
+  image.crossOrigin = "anonymous"; 
   image.src = imageSrc;
 
   const canvas = document.createElement("canvas");

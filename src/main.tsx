@@ -10,6 +10,15 @@ import ProtectedRoute from "./components/routes/ProtectedRoute";
 import { UserProvider } from "./contexts/UserContext.tsx"; // ✅ import this
 import { Toaster } from "sonner";
 
+if (
+  !("theme" in localStorage) || 
+  localStorage.theme === "dark"
+) {
+  document.documentElement.classList.add("dark");
+} else {
+  document.documentElement.classList.remove("dark");
+}
+
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ThemeProvider>
