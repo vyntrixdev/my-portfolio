@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AdminSidebar } from "../admin/AdminSidebar";
+import { AdminSidebar } from "./AdminSideBar";
 import { Hero } from "./../Hero";
 import { About } from "./../About";
 import { Skills } from "./../Skills";
