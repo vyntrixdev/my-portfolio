@@ -185,116 +185,8 @@ export function Hero({ admin = false }: HeroProps) {
   return (
     <section
       id="home"
-      className="flex items-center justify-center relative overflow-hidden"
+      className={`flex items-center justify-center relative overflow-hidden ${admin ? '' : 'py-32'}`}
     >
-      
-      {/* ======= Editable Form Overlay ======= */}
-      {/* {admin && isEditing && (
-        <div
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
-          onClick={() => setIsEditing(false)} // closes when clicking outside
-        >
-          <div
-            className={`relative max-w-m bg-white dark:bg-gray-900 rounded-2xl shadow-2xl w-full max-w-md p-6 border border-gray-200 dark:border-gray-700 transition-all ${
-              closing ? "animate-fadeOut" : "animate-fadeIn"
-            }`}
-            onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
-          >
-            <button
-              disabled={saving}
-              className="absolute top-4 right-4 text-gray-500 hover:text-red-500 transition"
-              onClick={handleClose}
-            >
-              ✕
-            </button>
-
-            <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
-              Edit Hero Info
-            </h3>
-
-            <div className="grid gap-4">
-              <div>
-                <label className="block text-sm text-gray-500 mb-1">Name</label>
-                <input
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                  className="w-full border border-gray-300 dark:border-gray-700 rounded-md p-2 dark:bg-gray-800 dark:text-white focus:ring-2 focus:ring-red-500 outline-none transition"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm text-gray-500 mb-1">Years Experience</label>
-                <input
-                  type="number"
-                  value={formData.experience}
-                  onChange={(e) =>
-                    setFormData({ ...formData, experience: e.target.value })
-                  }
-                  className="no-spinner w-full border border-gray-300 dark:border-gray-700 rounded-md p-2 dark:bg-gray-800 dark:text-white focus:ring-2 focus:ring-red-500 outline-none transition"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm text-gray-500 mb-1">Projects</label>
-                <input
-                  type="number"
-                  value={formData.projects}
-                  onChange={(e) =>
-                    setFormData({ ...formData, projects: e.target.value })
-                  }
-                  className="no-spinner w-full border border-gray-300 dark:border-gray-700 rounded-md p-2 dark:bg-gray-800 dark:text-white focus:ring-2 focus:ring-red-500 outline-none transition"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm text-gray-500 mb-1">Clients</label>
-                <input
-                  type="number"
-                  value={formData.clients}
-                  onChange={(e) =>
-                    setFormData({ ...formData, clients: e.target.value })
-                  }
-                  className="no-spinner w-full border border-gray-300 dark:border-gray-700 rounded-md p-2 dark:bg-gray-800 dark:text-white focus:ring-2 focus:ring-red-500 outline-none transition"
-                />
-              </div>
-            </div>
-
-            <div className="mt-8 flex justify-end gap-3">
-              <Button
-                disabled={saving}
-                variant="ghost"
-                onClick={handleClose}
-                className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-              >
-                Cancel
-              </Button>
-              <Button
-                variant="default"
-                disabled={saving}
-                onClick={handleSave}
-                className={`flex gap-1 items-center px-4 py-2 rounded-md bg-gradient-to-r from-red-500 to-red-600 text-white hover:from-red-700 hover:to-red-800 transition shadow-md ${
-                  saving ? "opacity-70 cursor-not-allowed" : ""
-                }`}
-              >
-                {saving ? (
-                  <>
-                    <Loader2 className="animate-spin w-4 h-4" /> Saving...
-                  </>
-                ) : (
-                  <>
-                    <Save size={16} /> Save
-                  </>
-                )}
-              </Button>
-            </div>
-          </div>
-        </div>
-      )} */}
-
-
       {/* Geometric background patterns */}
       <div className="absolute inset-0 bg-gradient-to-br from-red-50 via-purple-50 to-pink-50 dark:from-gray-950 dark:via-red-950/20 dark:to-purple-950/20">
         {/* Diagonal stripes */}
@@ -399,7 +291,7 @@ export function Hero({ admin = false }: HeroProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                <span className="relative text-sm z-10 dark:text-white">Hi, I'm </span>
+                <span className="relative text-md z-10 dark:text-white">Hi, I'm </span>
                 <br />
                 {isEditing ? (
                   <input
@@ -407,10 +299,10 @@ export function Hero({ admin = false }: HeroProps) {
                     disabled={!isEditing || saving}
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="px-2 py-1 pr-12 rounded-md border border-gray-300 dark:border-gray-700 bg-transparent shadow-b-red-500 outline-none dark:text-white "
+                    className="px-2 py-1 pr-12 text-xl rounded-md border border-gray-300 dark:border-gray-700 bg-transparent shadow-b-red-500 outline-none dark:text-white "
                   />
                 ) : (
-                  <span className="bg-gradient-to-r from-red-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r text-xl from-red-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                     {loading ? 'Loading...' : content?.name}
                   </span>
                 )}
@@ -630,6 +522,13 @@ export function Hero({ admin = false }: HeroProps) {
                       }}
                       transition={{ duration: 3, repeat: Infinity }}
                     >
+                      <motion.div
+                        className="absolute -top-2 -right-2 bg-gradient-to-r from-red-500 to-yellow-400 rounded-full p-3"
+                        animate={{ rotate: 360, scale: [1, 1.2, 1] }}
+                        transition={{ type: "tween", duration: 2, repeat: Infinity }}
+                      >
+                        <Sparkles className="w-6 h-6 text-white" />
+                      </motion.div>
                       {!isEditing ? (
                         <>
                           <div className="w-48 h-48 mx-auto rounded-full bg-gradient-to-br from-red-500 via-purple-500 to-pink-500 p-1 overflow-hidden">
@@ -639,13 +538,6 @@ export function Hero({ admin = false }: HeroProps) {
                               className="w-full h-full object-cover rounded-full"
                             />
                           </div>
-                          <motion.div
-                            className="absolute -top-2 -right-2 bg-gradient-to-r from-red-500 to-yellow-400 rounded-full p-3"
-                            animate={{ rotate: 360, scale: [1, 1.2, 1] }}
-                            transition={{ type: "tween", duration: 2, repeat: Infinity }}
-                          >
-                            <Sparkles className="w-6 h-6 text-white" />
-                          </motion.div>
                         </>
                       ) : (
                         <div className="flex flex-col items-center gap-3 relative">
