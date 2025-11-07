@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { AdminSidebar } from "./AdminSidebar";
+import { AdminSidebar } from "../admin/AdminSidebar";
 import { Hero } from "./../Hero";
 import { About } from "./../About";
 import { Skills } from "./../Skills";
 import { Projects } from "./../Projects";
 import { Contact } from "./../Contact";
-import { Toaster } from "sonner";
 import { HeroProvider } from "../../contexts/HeroContext";
 import { supabase } from "../../lib/supabase";
 import { motion, AnimatePresence } from "framer-motion";
