@@ -79,10 +79,10 @@ export default function AdminDashboard() {
         <HeroProvider>
           {activeSection === "hero" && <Hero admin />}
         </HeroProvider>
-        {activeSection === "about" && <About admin />}
-        {activeSection === "skills" && <Skills admin />}
-        {activeSection === "projects" && <Projects admin />}
-        {activeSection === "contact" && <Contact admin />}
+        {activeSection === "about" && <About  />}
+        {activeSection === "skills" && <Skills  />}
+        {activeSection === "projects" && <Projects />}
+        {activeSection === "contact" && <Contact />}
       </main>
 
       {/* 🟢 Session Expired Modal */}
